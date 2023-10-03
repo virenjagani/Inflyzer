@@ -8,14 +8,14 @@ import {
   sortData,
 } from "../redux/ducks/userReducer";
 import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { toast } from "react-toastify";
 import API from "../Utils/axios";
 import { Formik, Field, Form } from "formik";
 import { current } from "@reduxjs/toolkit";
-// import { getLength } from "../Utils/users";
-
+import { ButtonCommun } from "./Common/Button";
+import { LinkCommon } from "./Common/Link";
+import { InputCommun } from "./Common/Input";
 class UserList extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +35,6 @@ class UserList extends Component {
   componentDidMount() {
     this.props.getUser();
     this.updateData();
-   
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -54,14 +53,14 @@ class UserList extends Component {
     const lastIndex = recordPerPage * currentPage;
     const firstIndex = lastIndex - recordPerPage;
     let data;
-    console.log(firstIndex , '==' , lastIndex)
+    console.log(firstIndex, "==", lastIndex);
     if (this.props.user.userList !== null) {
       data = this.props.user.userList.slice(firstIndex, lastIndex);
-//check git
+      //check git
       const npage = Math.ceil(
         this.props.user.userList.length / this.state.recordPerPage
       );
-      console.log('this.state.currentPage ==>',this.state.currentPage)
+      console.log("this.state.currentPage ==>", this.state.currentPage);
       if (this.state.currentPage > npage) {
         this.setState({ currentPage: npage });
       }
@@ -70,13 +69,10 @@ class UserList extends Component {
     }
 
     this.setState({ data });
-
-   
   };
 
   handleDelete = (id) => {
     this.props.getDeleteDetails(id);
-   
   };
 
   handleLogout = () => {
@@ -110,7 +106,6 @@ class UserList extends Component {
 
   currentPage = (pageNumber) => {
     this.setState({ currentPage: pageNumber });
-    
   };
 
   nextPage = () => {
@@ -154,37 +149,37 @@ class UserList extends Component {
 
     return (
       <div>
-        <Link to={`/user/add`} className="btn btn-warning m-3">
+        <LinkCommon to={`/user/add`} className="btn btn-warning m-3">
           Add User
-        </Link>
+        </LinkCommon>
 
-        <Link
+        <LinkCommon
           to={`/login`}
           onClick={() => this.handleLogout()}
           className="btn btn-warning m-3"
         >
           Logout
-        </Link>
+        </LinkCommon>
         <div>
           <form onSubmit={this.handleSearchSubmit}>
             Search:{" "}
-            <input
+            <InputCommun
               placeholder="Search by Title..."
               type="text"
               onChange={(e) => this.handleSearch(e)}
               value={this.state.searchField}
               className="border border-info border-2 rounded m-2"
             />
-            <button className="btn btn-primary" type="submit">
+            <ButtonCommun className="btn btn-primary" type="submit">
               Search
-            </button>
-            <button
+            </ButtonCommun>
+            <ButtonCommun
               type="button"
               className="m-2 btn btn-primary"
               onClick={() => this.handleReset()}
             >
               Reset
-            </button>
+            </ButtonCommun>
           </form>
         </div>
 
@@ -217,19 +212,19 @@ class UserList extends Component {
                         <td>{title}</td>
                         <td>{description}</td>
                         <td>
-                          <Link
+                          <LinkCommon
                             to={`/user/edit/` + _id}
                             className="btn btn-primary"
                           >
                             Edit
-                          </Link>
+                          </LinkCommon>
                           &nbsp; &nbsp;
-                          <button
+                          <ButtonCommun
                             onClick={() => this.handleDelete(_id)}
                             className="btn btn-danger"
                           >
                             Delete
-                          </button>
+                          </ButtonCommun>
                         </td>
                       </tr>
                     );

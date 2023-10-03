@@ -16,6 +16,7 @@ import { connect } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { Link, withRouter } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
+import { ButtonCommun } from "../component/Common/Button";
 
 class RegistrationForm extends Component {
   handleSubmit = (values) => {
@@ -28,6 +29,7 @@ class RegistrationForm extends Component {
       this.props.history.push("/register");
     }
   }
+  
   handleErrorMoveToLogin = () => {
     this.props.history.push("/login");
     this.props.nullError();
@@ -101,7 +103,7 @@ class RegistrationForm extends Component {
                   />
                 </FormGroup>
 
-                <Button type="submit" variant="primary" className="m-3">
+                <ButtonCommun type="submit" variant="primary" className="m-3">
                   {this.props.auth.loading === true ? (
                     <>
                       {" "}
@@ -117,10 +119,10 @@ class RegistrationForm extends Component {
                   ) : (
                     <>Submit</>
                   )}
-                </Button>
-                <Button onClick={() => this.handleErrorMoveToLogin()}>
+                </ButtonCommun>
+                <ButtonCommun onClick={() => this.handleErrorMoveToLogin()}>
                   Login
-                </Button>
+                </ButtonCommun>
               </Form>
             </Formik>
           </Col>

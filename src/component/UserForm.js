@@ -10,6 +10,7 @@ import {
 import { withRouter } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { toast } from "react-toastify";
+import {ButtonCommun} from "./Common/Button"
 
 class UserForm extends Component {
   constructor(props) {
@@ -134,7 +135,7 @@ class UserForm extends Component {
                     />
                   </div>
 
-                  <button type="submit" className="btn btn-primary mt-3">
+                  <ButtonCommun type="submit" className="btn btn-primary mt-3">
                     {this.props.user.loading ? (
                       <>
                         {" "}
@@ -150,7 +151,7 @@ class UserForm extends Component {
                     ) : (
                       <>Submit</>
                     )}
-                  </button>
+                  </ButtonCommun>
                 </Form>
               )}
             </>
@@ -190,7 +191,7 @@ class UserForm extends Component {
                       className="text-danger"
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary mt-3">
+                  <ButtonCommun type="submit" className="btn btn-primary mt-3">
                     {this.props.user.loading ? (
                       <>
                         {" "}
@@ -206,7 +207,7 @@ class UserForm extends Component {
                     ) : (
                       <>Submit</>
                     )}
-                  </button>
+                  </ButtonCommun>
                 </Form>
               )}
             </>

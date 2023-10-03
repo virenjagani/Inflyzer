@@ -8,7 +8,7 @@ import {
   FormGroup,
   FormLabel,
   FormControl,
-  Button,
+  
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
@@ -16,6 +16,7 @@ import { getLogin, nullError } from "../redux/ducks/userReducer";
 import Spinner from "react-bootstrap/Spinner";
 import Alert from "react-bootstrap/Alert";
 import { toast } from "react-toastify";
+import { ButtonCommun } from "../component/Common/Button";
 
 class LoginForm extends Component {
   handleSubmit = (values) => {
@@ -91,7 +92,7 @@ class LoginForm extends Component {
                     />
                   </FormGroup>
 
-                  <Button className="m-3" type="submit" variant="primary">
+                  <ButtonCommun className="m-3 btn btn-primary" type="submit">
                     {this.props.auth.loading ? (
                       <>
                         <Spinner
@@ -106,10 +107,10 @@ class LoginForm extends Component {
                     ) : (
                       <>Submit</>
                     )}
-                  </Button>
-                  <Button onClick={()=>this.handleErrorMoveToRegister()}>
+                  </ButtonCommun>
+                  <ButtonCommun onClick={()=>this.handleErrorMoveToRegister()}>
                     Register
-                  </Button>
+                  </ButtonCommun>
                   {/* <Link className="btn btn-primary" to="/register">
                     Register
                   </Link> */}
