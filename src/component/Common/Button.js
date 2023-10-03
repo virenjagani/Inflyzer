@@ -1,6 +1,10 @@
 import { Button } from "react-bootstrap";
 export function ButtonCommun(props) {
-  const { children } = props;
+  const { children, type, className, ...restProps } = props;
 
-  return <Button {...props}>{children}</Button>;
+  return (
+    <Button type={type} className={className} {...restProps}>
+      {children}
+    </Button>
+  );
 }
