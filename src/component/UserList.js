@@ -35,6 +35,7 @@ class UserList extends Component {
   componentDidMount() {
     this.props.getUser();
     this.updateData();
+   
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -53,17 +54,29 @@ class UserList extends Component {
     const lastIndex = recordPerPage * currentPage;
     const firstIndex = lastIndex - recordPerPage;
     let data;
+    console.log(firstIndex , '==' , lastIndex)
     if (this.props.user.userList !== null) {
       data = this.props.user.userList.slice(firstIndex, lastIndex);
+//check git
+      const npage = Math.ceil(
+        this.props.user.userList.length / this.state.recordPerPage
+      );
+      console.log('this.state.currentPage ==>',this.state.currentPage)
+      if (this.state.currentPage > npage) {
+        this.setState({ currentPage: npage });
+      }
     } else {
       data = [];
     }
 
     this.setState({ data });
+
+   
   };
 
   handleDelete = (id) => {
     this.props.getDeleteDetails(id);
+   
   };
 
   handleLogout = () => {
@@ -97,6 +110,7 @@ class UserList extends Component {
 
   currentPage = (pageNumber) => {
     this.setState({ currentPage: pageNumber });
+    
   };
 
   nextPage = () => {
@@ -136,7 +150,6 @@ class UserList extends Component {
     } else {
       npage = 1;
     }
-
     const number = Array.from({ length: npage }, (_, index) => index + 1);
 
     return (
