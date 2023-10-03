@@ -77,7 +77,7 @@ class LoginForm extends Component {
                     <ErrorMessage
                       name="email"
                       component="div"
-                      className="error"
+                      className="error text-danger"
                     />
                   </FormGroup>
 
@@ -87,7 +87,7 @@ class LoginForm extends Component {
                     <ErrorMessage
                       name="password"
                       component="div"
-                      className="error"
+                      className="error text-danger"
                     />
                   </FormGroup>
 

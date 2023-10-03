@@ -110,25 +110,18 @@ export function* fetchSearchedUserList({ payload }) {
     yield put(makeRequest());
     const response = yield call(requestGetUserList);
     const filteredUsersData = response.data.details.filter((f) =>
-    f.title.toLowerCase().includes(payload)
+      f.title.toLowerCase().includes(payload)
     );
-    if(payload!==null){
-      
-      if(filteredUsersData !== null){
-        
+    if (payload !== null) {
+      if (filteredUsersData !== null) {
         yield put(setSearchedUserList(filteredUsersData));
-      }else{
+      } else {
         yield put(setUser(response.data.details));
-        
       }
+    } else {
+      yield put(setSearchedUserList(response.data.details));
     }
-    else{
-  yield put(setSearchedUserList(response.data.details));
-
-}
   } catch (error) {
     yield put(failRequest(error.message));
   }
 }
-
-

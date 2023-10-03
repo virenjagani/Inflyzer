@@ -15,6 +15,9 @@ import PrivateRoute from "../src/Auth/Authentication/PrivateRoute";
 import PublicRoute from "../src/Auth/Authentication/PublicRoute";
 import Home from "./component/Home";
 function App() {
+  const NotFound = () => {
+    return <div>Page Not Found</div>;
+  };
   return (
     <div className="App">
       <Provider store={store}>
@@ -50,6 +53,7 @@ function App() {
                   <UserForm />
                 </PublicRoute>
               </Route>
+              <Route component={NotFound} />
             </Switch>
           </BrowserRouter>
         </PersistGate>

@@ -129,13 +129,14 @@ class UserList extends Component {
     // const records = this.props.user.userList.slice(firstIndex, lastIndex);
 
     let npage;
-    if (this.props.user.userList !== null) {
+    if (this.props.user && this.props.user.userList) {
       npage = Math.ceil(
         this.props.user.userList.length / this.state.recordPerPage
       );
     } else {
       npage = 1;
     }
+
     const number = Array.from({ length: npage }, (_, index) => index + 1);
 
     return (
@@ -222,8 +223,8 @@ class UserList extends Component {
                   })
                 ) : (
                   <tr>
-                  <td colSpan="5">No Data Found</td>
-                </tr>
+                    <td colSpan="5">No Data Found</td>
+                  </tr>
                 )}
               </tbody>
             </Table>
