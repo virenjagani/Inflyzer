@@ -17,7 +17,7 @@ import { ButtonCommun } from "./Common/CommonComponents/CommonComponent";
 import { LinkCommon } from "./Common/CommonComponents/CommonComponent";
 import { InputCommon } from "./Common/CommonComponents/CommonComponent";
 import { SelectCommon } from "./Common/CommonComponents/CommonComponent";
-import { Headers } from "./Common/Headers";
+import { Headers } from "./Common/Header/Headers";
 class UserList extends Component {
   constructor(props) {
     super(props);

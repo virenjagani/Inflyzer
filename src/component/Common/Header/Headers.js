@@ -1,8 +1,10 @@
-import "../../Assets/header.css";
+import "../../../Assets/header.css";
 import DynamicFormRoundedIcon from "@mui/icons-material/DynamicFormRounded";
-import { LinkCommon } from "./Link";
-import { ButtonCommun } from "./Button";
-import { InputCommon } from "./Input";
+import { LinkCommon } from "../CommonComponents/CommonComponent";
+import { ButtonCommun } from "../CommonComponents/CommonComponent";
+import { InputCommon } from "../CommonComponents/CommonComponent";
+
+
 export function Headers(props) {
   return (
     <>
