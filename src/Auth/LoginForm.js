@@ -15,7 +15,7 @@ import { getLogin, nullError } from "../redux/ducks/userReducer";
 import Spinner from "react-bootstrap/Spinner";
 import Alert from "react-bootstrap/Alert";
 import { toast } from "react-toastify";
-import { ButtonCommun } from "../component/Common/Button";
+import { ButtonCommun } from "../component/Common/CommonComponents/CommonComponent";
 import { FormikInput } from "../component/Common/FormikComponents/FormikInput";
 import { FormikError } from "../component/Common/FormikComponents/FormikError";
 import { FormikSubmitButton } from "../component/Common/FormikComponents/FormikSubmitButton";

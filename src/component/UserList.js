@@ -13,10 +13,10 @@ import { toast } from "react-toastify";
 import API from "../Utils/axios";
 import { Formik, Field, Form } from "formik";
 import { current } from "@reduxjs/toolkit";
-import { ButtonCommun } from "./Common/Button";
-import { LinkCommon } from "./Common/Link";
-import { InputCommon } from "./Common/Input";
-import { SelectCommon } from "./Common/Select";
+import { ButtonCommun } from "./Common/CommonComponents/CommonComponent";
+import { LinkCommon } from "./Common/CommonComponents/CommonComponent";
+import { InputCommon } from "./Common/CommonComponents/CommonComponent";
+import { SelectCommon } from "./Common/CommonComponents/CommonComponent";
 import { Headers } from "./Common/Headers";
 class UserList extends Component {
   constructor(props) {

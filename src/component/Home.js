@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { LinkCommon } from './Common/Link';
+import { LinkCommon } from './Common/CommonComponents/CommonComponent';
 
 class Home extends Component {
     render() {

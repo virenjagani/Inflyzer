@@ -16,7 +16,7 @@ import { connect } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { Link, withRouter } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
-import { ButtonCommun } from "../component/Common/Button";
+import { ButtonCommun } from "../component/Common/CommonComponents/CommonComponent";
 import { ErrorAlert } from "../component/Common/FormikComponents/ErrorAlert";
 import { FormikInput } from "../component/Common/FormikComponents/FormikInput";
 import { FormikError } from "../component/Common/FormikComponents/FormikError";

@@ -10,7 +10,7 @@ import {
 import { withRouter } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { toast } from "react-toastify";
-import { ButtonCommun } from "./Common/Button";
+import { ButtonCommun } from "./Common/CommonComponents/CommonComponent";
 import { FormikInput } from "../component/Common/FormikComponents/FormikInput";
 import { FormikError } from "./Common/FormikComponents/FormikError";
 import { FormikSubmitButton } from "./Common/FormikComponents/FormikSubmitButton";
