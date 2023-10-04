@@ -17,6 +17,10 @@ import { ToastContainer, toast } from "react-toastify";
 import { Link, withRouter } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { ButtonCommun } from "../component/Common/Button";
+import { ErrorAlert } from "../component/Common/FormikComponents/ErrorAlert";
+import { FormikInput } from "../component/Common/FormikComponents/FormikInput";
+import { FormikError } from "../component/Common/FormikComponents/FormikError";
+import { FormikSubmitButton } from "../component/Common/FormikComponents/FormikSubmitButton";
 
 class RegistrationForm extends Component {
   handleSubmit = (values) => {
@@ -29,7 +33,7 @@ class RegistrationForm extends Component {
       this.props.history.push("/register");
     }
   }
-  
+
   handleErrorMoveToLogin = () => {
     this.props.history.push("/login");
     this.props.nullError();
@@ -67,58 +71,28 @@ class RegistrationForm extends Component {
                   <h1>Signup</h1>
                 </FormGroup>
                 <FormGroup>
-                  {this.props.auth?.error && (
-                    <Alert key={"danger"} variant={"danger"}>
-                      {this.props.auth?.error}
-                    </Alert>
-                  )}
+                  <ErrorAlert error={this.props.auth?.error} />
                 </FormGroup>
                 <FormGroup>
                   <FormLabel htmlFor="name">Name</FormLabel>
-                  <Field type="text" name="name" as={FormControl} />
-                  <ErrorMessage
-                    name="name"
-                    component="div"
-                    className="text-danger error"
-                  />
+                  <FormikInput type="text" name="name" />
+                  <FormikError name="name" />
                 </FormGroup>
 
                 <FormGroup>
                   <FormLabel htmlFor="email">Email</FormLabel>
-                  <Field type="text" name="email" as={FormControl} />
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className="text-danger error"
-                  />
+                  <FormikInput type="text" name="email" />
+                  <FormikError name="email" />
                 </FormGroup>
 
                 <FormGroup>
                   <FormLabel htmlFor="password">Password</FormLabel>
-                  <Field type="text" name="password" as={FormControl} />
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    className="text-danger error"
-                  />
+                  <FormikInput type="text" name="password" />
+                  <FormikError name="password" />
                 </FormGroup>
 
                 <ButtonCommun type="submit" variant="primary" className="m-3">
-                  {this.props.auth.loading === true ? (
-                    <>
-                      {" "}
-                      <Spinner
-                        as="span"
-                        animation="grow"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                      />
-                      Loading...
-                    </>
-                  ) : (
-                    <>Submit</>
-                  )}
+                  <FormikSubmitButton loading={this.props.auth.loading} />
                 </ButtonCommun>
                 <ButtonCommun onClick={() => this.handleErrorMoveToLogin()}>
                   Login

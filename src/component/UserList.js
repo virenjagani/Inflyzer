@@ -15,7 +15,9 @@ import { Formik, Field, Form } from "formik";
 import { current } from "@reduxjs/toolkit";
 import { ButtonCommun } from "./Common/Button";
 import { LinkCommon } from "./Common/Link";
-import { InputCommun } from "./Common/Input";
+import { InputCommon } from "./Common/Input";
+import { SelectCommon } from "./Common/Select";
+import { Headers } from "./Common/Headers";
 class UserList extends Component {
   constructor(props) {
     super(props);
@@ -130,12 +132,10 @@ class UserList extends Component {
   };
 
   render() {
+    const objectRowLimit = [5, 7, 10];
     if (this.props.user.message) {
       toast.success(this.props.user.message);
     }
-    // const lastIndex = this.state.recordPerPage * this.state.currentPage;
-    // const firstIndex = lastIndex - this.state.recordPerPage;
-    // const records = this.props.user.userList.slice(firstIndex, lastIndex);
 
     let npage;
     if (this.props.user && this.props.user.userList) {
@@ -149,39 +149,13 @@ class UserList extends Component {
 
     return (
       <div>
-        <LinkCommon to={`/user/add`} className="btn btn-warning m-3">
-          Add User
-        </LinkCommon>
-
-        <LinkCommon
-          to={`/login`}
-          onClick={() => this.handleLogout()}
-          className="btn btn-warning m-3"
-        >
-          Logout
-        </LinkCommon>
-        <div>
-          <form onSubmit={this.handleSearchSubmit}>
-            Search:{" "}
-            <InputCommun
-              placeholder="Search by Title..."
-              type="text"
-              onChange={(e) => this.handleSearch(e)}
-              value={this.state.searchField}
-              className="border border-info border-2 rounded m-2"
-            />
-            <ButtonCommun className="btn btn-primary" type="submit">
-              Search
-            </ButtonCommun>
-            <ButtonCommun
-              type="button"
-              className="m-2 btn btn-primary"
-              onClick={() => this.handleReset()}
-            >
-              Reset
-            </ButtonCommun>
-          </form>
-        </div>
+        <Headers
+          handleLogout={this.handleLogout}
+          handleSearchSubmit={this.handleSearchSubmit}
+          handleSearch={this.handleSearch}
+          searchValue={this.state.searchField}
+          handleReset={this.handleReset}
+        />
 
         {this.props.user?.loading ? (
           <div>
@@ -237,19 +211,18 @@ class UserList extends Component {
               </tbody>
             </Table>
             <ul className="pagination m-2">
-              <select
-                class="form-select w-25"
-                style={{ marginRight: "20px" }}
+              <label className="ms-2 d-flex justify-content-center align-items-center">
+                Select Row Limit:
+              </label>
+
+              <SelectCommon
+                className="ms-1 me-3"
                 onChange={(e) =>
                   this.setState({ recordPerPage: e.target.value })
                 }
-                aria-label="Default select example"
-              >
-                <option selected>Select Row limit</option>
-                <option value={5}>5</option>
-                <option value={7}>7</option>
-                <option value={10}>10</option>
-              </select>
+                objectRowLimit={objectRowLimit}
+              />
+
               <li className="page-item">
                 <a href="#" className="page-link" onClick={this.prevPage}>
                   Prev

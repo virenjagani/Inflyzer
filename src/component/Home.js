@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { LinkCommon } from './Common/Link';
 
 class Home extends Component {
     render() {
         return (
             <div>
-                <Link to='/user' className='btn btn-primary m-3'>Dashbord</Link>
-                <Link to='/login' className='btn btn-primary'>Login</Link>
+                <LinkCommon to='/user' className='btn btn-primary m-3'>Dashbord</LinkCommon>
+                <LinkCommon to='/login' className='btn btn-primary'>Login</LinkCommon>
             </div>
         );
     }

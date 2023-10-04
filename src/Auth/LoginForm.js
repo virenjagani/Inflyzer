@@ -8,7 +8,6 @@ import {
   FormGroup,
   FormLabel,
   FormControl,
-  
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
@@ -17,11 +16,22 @@ import Spinner from "react-bootstrap/Spinner";
 import Alert from "react-bootstrap/Alert";
 import { toast } from "react-toastify";
 import { ButtonCommun } from "../component/Common/Button";
+import { FormikInput } from "../component/Common/FormikComponents/FormikInput";
+import { FormikError } from "../component/Common/FormikComponents/FormikError";
+import { FormikSubmitButton } from "../component/Common/FormikComponents/FormikSubmitButton";
+import { ErrorAlert } from "../component/Common/FormikComponents/ErrorAlert";
 
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   handleSubmit = (values) => {
     this.props.getLogin(values);
   };
+  componentDidMount() {}
 
   componentDidUpdate() {
     if (this.props.auth.message === "success") {
@@ -30,10 +40,10 @@ class LoginForm extends Component {
       this.props.history.push("/login");
     }
   }
-  handleErrorMoveToRegister =()=>{
-    this.props.history.push('/register')
-    this.props.nullError()
-  }
+  handleErrorMoveToRegister = () => {
+    this.props.history.push("/register");
+    this.props.nullError();
+  };
   render() {
     return (
       <div>
@@ -66,54 +76,28 @@ class LoginForm extends Component {
                     <h1>Login</h1>
                   </FormGroup>
                   <FormGroup>
-                    {this.props.auth?.error && (
-                      <Alert key={"danger"} variant={"danger"}>
-                        {this.props.auth?.error}
-                      </Alert>
-                    )}
+                    <ErrorAlert error={this.props.auth?.error} />
                   </FormGroup>
                   <FormGroup>
                     <FormLabel>Email</FormLabel>
-                    <Field type="text" name="email" as={FormControl} />
-                    <ErrorMessage
-                      name="email"
-                      component="div"
-                      className="error text-danger"
-                    />
+                    <FormikInput type="text" name="email" />
+                    <FormikError name="email" />
                   </FormGroup>
 
                   <FormGroup>
                     <FormLabel>Password</FormLabel>
-                    <Field type="text" name="password" as={FormControl} />
-                    <ErrorMessage
-                      name="password"
-                      component="div"
-                      className="error text-danger"
-                    />
+                    <FormikInput type="text" name="password" />
+                    <FormikError name="password" />
                   </FormGroup>
 
                   <ButtonCommun className="m-3 btn btn-primary" type="submit">
-                    {this.props.auth.loading ? (
-                      <>
-                        <Spinner
-                          as="span"
-                          animation="grow"
-                          size="sm"
-                          role="status"
-                          aria-hidden="true"
-                        />
-                        <> Loading...</>{" "}
-                      </>
-                    ) : (
-                      <>Submit</>
-                    )}
+                    <FormikSubmitButton loading={this.props.auth.loading} />
                   </ButtonCommun>
-                  <ButtonCommun onClick={()=>this.handleErrorMoveToRegister()}>
+                  <ButtonCommun
+                    onClick={() => this.handleErrorMoveToRegister()}
+                  >
                     Register
                   </ButtonCommun>
-                  {/* <Link className="btn btn-primary" to="/register">
-                    Register
-                  </Link> */}
                 </Form>
               </Formik>
             </Col>
@@ -132,7 +116,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getLogin: (value) => dispatch(getLogin(value)),
-    nullError:()=>dispatch(nullError())
+    nullError: () => dispatch(nullError()),
   };
 };
 

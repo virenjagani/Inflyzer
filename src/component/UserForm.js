@@ -10,7 +10,10 @@ import {
 import { withRouter } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import { toast } from "react-toastify";
-import {ButtonCommun} from "./Common/Button"
+import { ButtonCommun } from "./Common/Button";
+import { FormikInput } from "../component/Common/FormikComponents/FormikInput";
+import { FormikError } from "./Common/FormikComponents/FormikError";
+import { FormikSubmitButton } from "./Common/FormikComponents/FormikSubmitButton";
 
 class UserForm extends Component {
   constructor(props) {
@@ -93,64 +96,22 @@ class UserForm extends Component {
                 <Form className="border border-3 border-primary rounded p-3">
                   <div className="form-group">
                     <label htmlFor="name">Name</label>
-                    <Field
-                      type="text"
-                      id="name"
-                      disabled
-                      name="name"
-                      className="form-control"
-                    />
-                    <ErrorMessage
-                      name="name"
-                      component="div"
-                      className="text-danger"
-                    />
+                    <FormikInput type="text" disabled name="name" />
+                    <FormikError name="name" />
                   </div>
                   <div className="form-group">
                     <label htmlFor="title">Title</label>
-                    <Field
-                      type="text"
-                      id="title"
-                      name="title"
-                      className="form-control"
-                    />
-                    <ErrorMessage
-                      name="title"
-                      component="div"
-                      className="text-danger"
-                    />
+                    <FormikInput type="text" name="title" />
+                    <FormikError name="title" />
                   </div>
                   <div className="form-group">
                     <label htmlFor="description">Description</label>
-                    <Field
-                      type="text"
-                      id="description"
-                      name="description"
-                      className="form-control"
-                    />
-                    <ErrorMessage
-                      name="description"
-                      component="div"
-                      className="text-danger"
-                    />
+                    <FormikInput type="text" name="description" />
+                    <FormikError name="description" />
                   </div>
 
                   <ButtonCommun type="submit" className="btn btn-primary mt-3">
-                    {this.props.user.loading ? (
-                      <>
-                        {" "}
-                        <Spinner
-                          as="span"
-                          animation="grow"
-                          size="sm"
-                          role="status"
-                          aria-hidden="true"
-                        />
-                        <>Loading...</>
-                      </>
-                    ) : (
-                      <>Submit</>
-                    )}
+                    <FormikSubmitButton loading={this.props.user.loading} />
                   </ButtonCommun>
                 </Form>
               )}
@@ -165,48 +126,16 @@ class UserForm extends Component {
                 <Form className="border border-3 border-primary rounded p-3">
                   <div className="form-group">
                     <label htmlFor="title">Title</label>
-                    <Field
-                      type="text"
-                      id="title"
-                      name="title"
-                      className="form-control"
-                    />
-                    <ErrorMessage
-                      name="title"
-                      component="div"
-                      className="text-danger"
-                    />
+                    <FormikInput type="text" name="title" />
+                    <FormikError name="title" />
                   </div>
                   <div className="form-group">
                     <label htmlFor="description">Description</label>
-                    <Field
-                      type="text"
-                      id="description"
-                      name="description"
-                      className="form-control"
-                    />
-                    <ErrorMessage
-                      name="description"
-                      component="div"
-                      className="text-danger"
-                    />
+                    <FormikInput type="text" name="description" />
+                    <FormikError name="description" />
                   </div>
                   <ButtonCommun type="submit" className="btn btn-primary mt-3">
-                    {this.props.user.loading ? (
-                      <>
-                        {" "}
-                        <Spinner
-                          as="span"
-                          animation="grow"
-                          size="sm"
-                          role="status"
-                          aria-hidden="true"
-                        />
-                        <>Loading...</>
-                      </>
-                    ) : (
-                      <>Submit</>
-                    )}
+                    <FormikSubmitButton loading={this.props.user.loading} />
                   </ButtonCommun>
                 </Form>
               )}
