@@ -10,10 +10,6 @@ export function requestGetUserList() {
   return response;
 }
 
-// export function requestGetUserList(){
-//   return request({url:`/allpost`,method:'GET'})
-// }
-
 export async function requestAddUserDetails(payload) {
   const response = await axios.post(`/addpost`, payload, {
     headers: {
