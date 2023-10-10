@@ -87,7 +87,7 @@ class RegistrationForm extends Component {
 
                 <FormGroup>
                   <FormLabel htmlFor="password">Password</FormLabel>
-                  <FormikInput type="text" name="password" />
+                  <FormikInput type="password" name="password" />
                   <FormikError name="password" />
                 </FormGroup>
 

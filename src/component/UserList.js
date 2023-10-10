@@ -55,14 +55,12 @@ class UserList extends Component {
     const lastIndex = recordPerPage * currentPage;
     const firstIndex = lastIndex - recordPerPage;
     let data;
-    console.log(firstIndex, "==", lastIndex);
+
     if (this.props.user.userList !== null) {
       data = this.props.user.userList.slice(firstIndex, lastIndex);
-      //check git
       const npage = Math.ceil(
         this.props.user.userList.length / this.state.recordPerPage
       );
-      console.log("this.state.currentPage ==>", this.state.currentPage);
       if (this.state.currentPage > npage) {
         this.setState({ currentPage: npage });
       }
@@ -97,6 +95,7 @@ class UserList extends Component {
 
   handleReset = () => {
     this.setState({ searchField: "" });
+    this.setState({ currentPage:1 });
     this.props.getUser();
   };
 
